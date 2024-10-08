@@ -1,0 +1,12 @@
+<h1>Update Status for {{ ticket.title }}</h1>
+<form method="POST">
+    {% csrf_token %}
+    <select name="status">
+        {% for status, display in ticket.STATUS_CHOICES %}
+            <option value="{{ status }}" {% if ticket.status == status %}selected{% endif %}>
+                {{ display }}
+            </option>
+        {% endfor %}
+    </select>
+    <button type="submit">Update</button>
+</form>
